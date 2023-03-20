@@ -5,14 +5,11 @@ on:
     branches:
       - main
 
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    container: ubuntu
-    services:
-      image: sonarqube
-      ports: 9000:9000
     steps:
       - uses: actions/checkout@v2
         with:
