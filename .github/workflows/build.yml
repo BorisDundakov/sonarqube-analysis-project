@@ -13,6 +13,7 @@ name: Main Workflow
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
+    container: ubuntu
     steps:
     - uses: actions/checkout@v3
       with:
