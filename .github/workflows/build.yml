@@ -10,7 +10,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     container: ubuntu
-    services:
       image: ubuntu
       options: --user root
     steps:
