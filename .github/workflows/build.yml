@@ -20,7 +20,7 @@ jobs:
         fetch-depth: 0
     - name: test reachability
       run: |
-          curl http://localhost:9000
+          curl http://127.0.0.1:9000
 #     - name: SonarQube Scan
 #       uses: sonarsource/sonarqube-scan-action@master
 #       env:
