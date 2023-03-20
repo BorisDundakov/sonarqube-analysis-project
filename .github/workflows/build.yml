@@ -21,6 +21,7 @@ jobs:
         fetch-depth: 0
     - name: test reachability
       run: |
+          apt-get -y update; apt-get -y install curl
           curl http://127.0.0.1:9000
 #     - name: SonarQube Scan
 #       uses: sonarsource/sonarqube-scan-action@master
