@@ -1,3 +1,43 @@
+# name: Build
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     container:
+#       image: ubuntu
+#       options: --user root
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
+#       - name: test connection
+#         run: |
+#              apt-get -y update; apt-get -y install curl
+#              #curl http://127.0.0.1:9000 --> refused
+#              #curl http://localhost:9000 --> refused
+#              #curl http://46.10.149.14:9000 --> timed out
+#              #curl http://192.168.1.7:9000 --> timed out
+#              #curl  http://172.17.0.1:9000 --> refused
+      
+#       - uses: sonarsource/sonarqube-scan-action@master
+#         env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#       # If you wish to fail your job when the Quality Gate is red, uncomment the
+#       # following lines. This would typically be used to fail a deployment.
+#       # - uses: sonarsource/sonarqube-quality-gate-action@master
+#       #   timeout-minutes: 5
+#       #   env:
+#       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
 name: Build
 
 on:
@@ -5,27 +45,15 @@ on:
     branches:
       - main
 
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu
-      options: --user root
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      
-      - name: test connection
-        run: |
-             apt-get -y update; apt-get -y install curl
-             #curl http://127.0.0.1:9000 --> refused
-             #curl http://localhost:9000 --> refused
-             #curl http://46.10.149.14:9000 --> timed out
-             #curl http://192.168.1.7:9000 --> timed out
-             #curl  http://172.17.0.1:9000 --> refused
-      
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
