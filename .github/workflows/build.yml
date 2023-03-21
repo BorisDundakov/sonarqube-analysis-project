@@ -22,9 +22,9 @@ jobs:
              apt-get -y update; apt-get -y install curl
              #curl http://127.0.0.1:9000 --> refused
              #curl http://localhost:9000 --> refused
-             curl http://46.10.149.14:9000
-             #$curl http://192.168.1.7:9000
-             #$curl  http://172.17.0.1:9000
+             #curl http://46.10.149.14:9000 --> timed out
+             curl http://192.168.1.7:9000
+             #curl  http://172.17.0.1:9000
       
       - uses: sonarsource/sonarqube-scan-action@master
         env:
